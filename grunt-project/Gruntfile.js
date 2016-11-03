@@ -6,15 +6,25 @@ module.exports=function(grunt){
     "use strict";
     grunt.initConfig({
         concat:{
-            dist:{
+            js:{
                 src: ['js/*.js'],
                 dest:'build/script.js',
             },
+            css:{
+                src: ['css/*.css'],
+                dest:'build/style.css',
+            }
+        },
+        cssmin: {
+            css:{
+                src: 'build/style.css',
+                dest: 'css/release/main.min.css'
+            }
         },
         watch: {
             scripts: {
-                files: ['js/*.js'],
-                tasks: ['concat'],
+                files: ['js/*.js', 'css/*.css', 'build/*.css'],
+                tasks: ['concat', 'cssmin'],
                 options: {
                     spawn: false,
                 },
@@ -22,8 +32,10 @@ module.exports=function(grunt){
         },
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('default', ['watch']);
+
 
 /*
     grunt.registerTask('speak', function(){
