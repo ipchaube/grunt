@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="node_modules/qunitjs/qunit/qunit.css">
+
+    <style>
+
+        .usaflag{
+            position: relative;
+            background-image: -webkit-linear-gradient(220deg, #3c3b6e 40%, transparent 40%), linear-gradient(#b22234 50%, #ffffff 50%);
+            background-image: -o-linear-gradient(90deg, #3c3b6e 40%, transparent 40%), linear-gradient(#b22234 50%, #ffffff 50%);
+            background-image: -moz-linear-gradient(90deg, #3c3b6e 40%, transparent 40%), linear-gradient(#b22234 50%, #ffffff 50%);
+            background-image: linear-gradient(90deg, #3c3b6e 40%, transparent 40%), linear-gradient(#b22234 50%, #ffffff 50%);
+            background-size: 300px 84px, 300px 24px;
+            background-repeat: no-repeat, repeat-y;
+            width: 300px;
+            height: 158px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flag">
+    <div class="usaflag">
+        <div class="star1 star2">
+
+        </div>
+
+    </div>
+
+
+</div>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="node_modules/qunitjs/qunit/qunit.js"></script>
+<script src="tests.js"></script>
+</body>
+</html>
+
+<script>
+
+   /* var alert=function(){
+        document.write("Hi");
+    }*/
+    //alert();
+    function dataset(a,b, dataset1){
+        alert("Bye");
+        dataset1(a, b);
+    }
+
+    function manofkind(a, b){
+        alert("Hi");
+    }
+
+   /*
+    dataset("asdsa","sadsa", function(){
+        alert("FFF");
+    });*/
+   //OR
+   dataset("asdsa","sadsa", manofkind);
+
+    function createmock(){
+        var obj={
+            "name": "1dfsd",
+            "address": "varanasi"
+        };
+        return obj;
+    }
+</script>
+
+<script>
+
+
+
+
+    QUnit.test( "Test should return Object", function( assert ) {
+        var mock=createmock();
+        //alert(typeof mock);
+        assert.ok( typeof mock === "object", "Passed!" );
+        assert.ok( mock.name != null, "Passed!" );
+        try {
+            assert.ok(isNaN(mock.name), "Passed!");
+        }catch(err){
+            assert.ok(1!=1, "Not able to chek");
+        }
+    });
+
+    QUnit.test( "Test should should not be null", function( assert ) {
+        var mock=createmock();
+        assert.ok( mock != null, "Passed!" );
+    });
+
+</script>
